@@ -1,3 +1,26 @@
-body {
-    background-color: skyblue;
+.login-container{
+    width: 80%;
+    height: 80vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.presentation{
+    background-color: #e2231a;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    height: 80vh;
+}
+.presentation h2, .presentation p{
+    color: #fff;
+}
+
+.form-login{
+    background-color: #ffe9e8;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+
 }
