@@ -1,4 +1,6 @@
-import { startStimulusApp } from '@symfony/stimulus-bundle';
+import { startStimulusApp } from '@symfony/stimulus-bridge';
+
+startStimulusApp(require.context('./controllers', true, /\.(j|t)sx?$/));
 
 const app = startStimulusApp();
 // register any custom, 3rd party controllers here
