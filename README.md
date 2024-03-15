@@ -24,11 +24,14 @@ Una vez descargado el zip del proyecto y colocado en el directorio correspondien
     - `php bin/console doctrine:database:create`
     - `php bin/console doctrine:migrations:migrate`
     - `npm install`
+    - `yarn install --force`
     - `symfony server:start`
 
 ## Uso
 
 Una vez el proyecto esté instalado y funcionando, para poder cargar los datos desde la API Rest mencionada en el enunciado de la prueba técnica y ver sus datos, es necesario registrarse en la aplicación. Desde el panel de administración se puede insertar los países manualmente o hacer click en el enlace "Importar países".
+
+Para ver la información de los paises se puede ver desde la raiz una vez se hayan creado o importado los paises, o desde el mismo panel admin.
 
 Cualquier error o duda por favor ponerse en contacto con el autor a través del email: johnhr710@gmail.com
 
