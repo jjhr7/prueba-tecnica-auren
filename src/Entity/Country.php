@@ -15,30 +15,27 @@ class Country
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $commonname = null;
+    private ?string $commonName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $officialname = null;
+    private ?string $officialName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nativeofficialname = null;
+    #[ORM\Column(type:  Types::TEXT)]
+    private ?string $nativeData = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nativecommonname = null;
-
-    #[ORM\Column(length: 5, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $tld = null;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 255)]
     private ?string $cca2 = null;
 
-    #[ORM\Column]
-    private ?int $ccn3 = null;
+    #[ORM\Column(length: 255)]
+    private ?string $ccn3 = null;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 255)]
     private ?string $cca3 = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 255)]
     private ?string $cioc = null;
 
     #[ORM\Column]
@@ -48,19 +45,19 @@ class Country
     private ?string $status = null;
 
     #[ORM\Column]
-    private ?bool $unmember = null;
+    private ?bool $unMember = null;
 
     #[ORM\Column(length: 255)]
     private ?string $currencies = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $callingcode = null;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $callingCode = null;
 
     #[ORM\Column(length: 255)]
     private ?string $capital = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $altspellings = null;
+    private ?string $altSpellings = null;
 
     #[ORM\Column(length: 255)]
     private ?string $region = null;
@@ -69,13 +66,13 @@ class Country
     private ?string $subregion = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $lenguages = null;
+    private ?string $languages = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $translations = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $geographiccoords = null;
+    private ?string $geographicCoords = null;
 
     #[ORM\Column]
     private ?bool $landLocked = null;
@@ -108,12 +105,12 @@ class Country
     private ?string $car = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $timezones = null;
+    private ?string $timeZones = null;
 
     #[ORM\Column(length: 255)]
     private ?string $continents = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $flags = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -126,63 +123,49 @@ class Country
     private ?string $capitalCoords = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $postalCodeFormat = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $postalCodeRegex = null;
+    private ?string $postalCodeData = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCommonname(): ?string
+    public function getCommonName(): ?string
     {
-        return $this->commonname;
+        return $this->commonName;
     }
 
-    public function setCommonname(string $commonname): static
+    public function setCommonName(string $commonName): static
     {
-        $this->commonname = $commonname;
+        $this->commonName = $commonName;
 
         return $this;
     }
 
-    public function getOfficialname(): ?string
+    public function getOfficialName(): ?string
     {
-        return $this->officialname;
+        return $this->officialName;
     }
 
-    public function setOfficialname(string $officialname): static
+    public function setOfficialName(string $officialName): static
     {
-        $this->officialname = $officialname;
+        $this->officialName = $officialName;
 
         return $this;
     }
 
-    public function getNativeofficialname(): ?string
+    public function getNativeData(): ?string
     {
-        return $this->nativeofficialname;
+        return $this->nativeData;
     }
 
-    public function setNativeofficialname(string $nativeofficialname): static
+    public function setNativeData(string $nativeData): static
     {
-        $this->nativeofficialname = $nativeofficialname;
+        $this->nativeData = $nativeData;
 
         return $this;
     }
 
-    public function getNativecommonname(): ?string
-    {
-        return $this->nativecommonname;
-    }
-
-    public function setNativecommonname(string $nativecommonname): static
-    {
-        $this->nativecommonname = $nativecommonname;
-
-        return $this;
-    }
 
     public function getTld(): ?string
     {
@@ -208,12 +191,12 @@ class Country
         return $this;
     }
 
-    public function getCcn3(): ?int
+    public function getCcn3(): ?string
     {
         return $this->ccn3;
     }
 
-    public function setCcn3(int $ccn3): static
+    public function setCcn3(string $ccn3): static
     {
         $this->ccn3 = $ccn3;
 
@@ -270,12 +253,12 @@ class Country
 
     public function isUnMember(): ?bool
     {
-        return $this->unmember;
+        return $this->unMember;
     }
 
-    public function setUnmember(bool $unmember): static
+    public function setUnMember(bool $unMember): static
     {
-        $this->unmember = $unmember;
+        $this->unMember = $unMember;
 
         return $this;
     }
@@ -292,14 +275,14 @@ class Country
         return $this;
     }
 
-    public function getCallingcode(): ?string
+    public function getCallingCode(): ?string
     {
-        return $this->callingcode;
+        return $this->callingCode;
     }
 
-    public function setCallingcode(string $callingcode): static
+    public function setCallingCode(string $callingCode): static
     {
-        $this->callingcode = $callingcode;
+        $this->callingCode = $callingCode;
 
         return $this;
     }
@@ -316,14 +299,14 @@ class Country
         return $this;
     }
 
-    public function getAltspellings(): ?string
+    public function getAltSpellings(): ?string
     {
-        return $this->altspellings;
+        return $this->altSpellings;
     }
 
-    public function setAltspellings(string $altspellings): static
+    public function setAltSpellings(string $altSpellings): static
     {
-        $this->altspellings = $altspellings;
+        $this->altSpellings = $altSpellings;
 
         return $this;
     }
@@ -352,14 +335,14 @@ class Country
         return $this;
     }
 
-    public function getLenguages(): ?string
+    public function getLanguages(): ?string
     {
-        return $this->lenguages;
+        return $this->languages;
     }
 
-    public function setLenguages(string $lenguages): static
+    public function setLanguages(string $languages): static
     {
-        $this->lenguages = $lenguages;
+        $this->languages = $languages;
 
         return $this;
     }
@@ -376,14 +359,14 @@ class Country
         return $this;
     }
 
-    public function getGeographiccoords(): ?string
+    public function getGeographicCoords(): ?string
     {
-        return $this->geographiccoords;
+        return $this->geographicCoords;
     }
 
-    public function setGeographiccoords(string $geographiccoords): static
+    public function setGeographicCoords(string $geographicCoords): static
     {
-        $this->geographiccoords = $geographiccoords;
+        $this->geographicCoords = $geographicCoords;
 
         return $this;
     }
@@ -404,12 +387,9 @@ class Country
     {
         return $this->borders;
     }
-
-    public function setBorders(?string $borders): static
+    public function setBorders(?string $borders): void
     {
         $this->borders = $borders;
-
-        return $this;
     }
 
     public function getArea(): ?float
@@ -508,14 +488,14 @@ class Country
         return $this;
     }
 
-    public function getTimezones(): ?string
+    public function getTimeZones(): ?string
     {
-        return $this->timezones;
+        return $this->timeZones;
     }
 
-    public function setTimezones(string $timezones): static
+    public function setTimeZones(string $timeZones): static
     {
-        $this->timezones = $timezones;
+        $this->timeZones = $timeZones;
 
         return $this;
     }
@@ -580,27 +560,16 @@ class Country
         return $this;
     }
 
-    public function getPostalCodeFormat(): ?string
+    public function getPostalCodeData(): ?string
     {
-        return $this->postalCodeFormat;
+        return $this->postalCodeData;
     }
 
-    public function setPostalCodeFormat(string $postalCodeFormat): static
+    public function setPostalCodeData(string $postalCodeData): static
     {
-        $this->postalCodeFormat = $postalCodeFormat;
+        $this->postalCodeData = $postalCodeData;
 
         return $this;
     }
 
-    public function getPostalCodeRegex(): ?string
-    {
-        return $this->postalCodeRegex;
-    }
-
-    public function setPostalCodeRegex(string $postalCodeRegex): static
-    {
-        $this->postalCodeRegex = $postalCodeRegex;
-
-        return $this;
-    }
 }

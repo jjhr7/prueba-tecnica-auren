@@ -21,6 +21,13 @@ class CountryRepository extends ServiceEntityRepository
         parent::__construct($registry, Country::class);
     }
 
+    public function thereIsCountryData(): bool{
+        return $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->getQuery()
+            ->getSingleScalarResult() > 0;
+    }
+
     //    /**
     //     * @return Country[] Returns an array of Country objects
     //     */
