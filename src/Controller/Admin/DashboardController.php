@@ -51,7 +51,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
         yield MenuItem::linkToRoute('Importar Países', 'fas fa-download', 'app-import-countries');
-        yield MenuItem::linkToCrud('Paises', 'fas fa-list', Country::class);
+        yield MenuItem::linkToCrud('Países', 'fas fa-list', Country::class);
         yield MenuItem::linkToCrud('Usuarios', 'fas fa-users', User::class);
         yield MenuItem::linkToRoute('Home', 'fas fa-home', 'app_home');
     }
