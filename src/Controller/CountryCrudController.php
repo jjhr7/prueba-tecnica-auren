@@ -67,7 +67,7 @@ class CountryCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInSingular('País')
-            ->setEntityLabelInPlural('Paises')
+            ->setEntityLabelInPlural('Países')
             ->setSearchFields(['commonName', 'officialName', 'cca2', 'cca3'])
             ->setDefaultSort(['commonName' => 'ASC']);
     }
