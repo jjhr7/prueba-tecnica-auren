@@ -24,3 +24,31 @@
     border-bottom-right-radius: 13px;
 
 }
+
+.nav-home-auren{
+    background-color: #e2231a;
+    -webkit-box-shadow: 0 8px 6px -6px rgba(226,35,26,0.3);
+    -moz-box-shadow: 0 8px 6px -6px rgba(226,35,26,0.3);
+    box-shadow: 0 8px 6px -6px rgba(226,35,26,0.3);
+}
+
+.nav-home-auren a, .nav-home-auren p{
+    color: #fff!important;
+}
+
+.nav-home-auren a:hover{
+    color: #0a0a0a!important;
+    transition: 0.5s;
+}
+
+#countriesTable tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+#countriesTable tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.form-register-auren ul li{
+    color:  #e2231a;
+}

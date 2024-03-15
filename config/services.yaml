@@ -25,4 +25,4 @@ services:
     App\Service\CountryImporter:
         arguments:
             $em: '@doctrine.orm.entity_manager'
-            $serializer: '@serializer'
+

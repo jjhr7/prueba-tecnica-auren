@@ -1,0 +1,28 @@
+<div class="container-fluid p-0 nav-home-auren">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light p-2">
+            <a class="navbar-brand" href="/">auren</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% if currentPage != 'login' or is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Acceso admin</a>
+                    </li>
+                    {% endif %}
+                    {% if currentPage != 'register' and  is_granted('IS_AUTHENTICATED_FULLY') == false %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Registro</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

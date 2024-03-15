@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenido a la prueba técnica de Auren{% endblock %}
+
+{% block body %}
+
+{% include 'partials/public/_public-nav.html.twig' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center mt-4">
+            <h1>Listado de paises</h1>
+        </div>
+
+        {% if thereIsData %}
+
+
+            <div class="col-md-12 mt-4">
+                <table id="countriesTable"  >
+                    <thead class="table-home-countries">
+                    <tr>
+                        <th>Nombre Común</th>
+                        <!--<th>Nombre Oficial</th>
+                        <th>Información Nativa</th>
+                        <th>TLD</th>
+                        <th>CCA2</th>
+                        <th>CCN3</th>
+                        <th>CCA3</th>
+                        <th>CIOC</th>
+                        <th>Independiente</th>
+                        <th>Estado</th>
+                        <th>Miembro de la ONU</th>-->
+                        <th>Monedas</th>
+                        <!--<th>Código de Llamada</th>-->
+                        <th>Capital</th>
+                        <!--<th>Variantes de Nombre</th>-->
+                        <th>Región</th>
+                        <th>Subregión</th>
+                        <th>Idiomas</th>
+                        <!--<th>Traducciones</th>
+                        <th>Coordenadas Geográficas</th>
+                        <th>Tierra Adentro</th>
+                        <th>Área</th>
+                        <th>Gentilicios</th>
+                        <th>Bandera</th>
+                        <th>Mapas</th>-->
+                        <th>Población</th>
+                        <!--<th>Gini</th>
+                        <th>FIFA</th>
+                        <th>Automóvil</th>
+                        <th>Zonas Horarias</th>
+                        <th>Continentes</th>-->
+                        <th>Banderas</th>
+                        <!--<th>Escudo de Armas</th>
+                        <th>Inicio de Semana</th>
+                        <th>Coordenadas de la Capital</th>
+                        <th>Datos del Código Postal</th>-->
+                    </tr>
+                    </thead>
+                </table>
+
+                <div id="spinner" class="text-center">
+                    <div class="spinner-border" role="status">
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-12 text-center mt-4">
+                <h3>Aún no se han creado ni importado paises, para ello debes de iniciar sesión y hacelo desde el panel de administración.</h3>
+            </div>
+
+        {% endif %}
+    </div>
+</div>
+    {% if thereIsData == true %}
+    <script>
+
+        $(document).ready(function() {
+            $('#countriesTable').DataTable({
+                data:  {{ countriesData|raw }},
+                columns: [
+                    { title: "Nombre Común", data: "commonName" },
+                    /*{ title: "Nombre Oficial", data: "officialName" },
+                    { title: "Información Nativa", data: "nativeData" },
+                    { title: "TLD", data: "tld" },
+                    { title: "CCA2", data: "cca2" },
+                    { title: "CCN3", data: "ccn3" },
+                    { title: "CCA3", data: "cca3" },
+                    { title: "CIOC", data: "cioc" },
+                    { title: "Independiente", data: "independent" },
+                    { title: "Estado", data: "status" },
+                    { title: "Miembro de la ONU", data: "unMember" },*/
+                    { title: "Monedas", data: "currencies" },
+                    /*{ title: "Código de Llamada", data: "callingCode" },*/
+                    { title: "Capital", data: "capital" },
+                    /*{ title: "Variantes de Nombre", data: "altSpellings" },*/
+                    { title: "Región", data: "region" },
+                    { title: "Subregión", data: "subregion" },
+                    { title: "Idiomas", data: "languages" },
+                    /*{ title: "Traducciones", data: "translations" },
+                    { title: "Coordenadas Geográficas", data: "geographicCoords" },
+                    { title: "Tierra Adentro", data: "landLocked" },
+                    { title: "Fronteras", data: "borders" },
+                    { title: "Área", data: "area" },
+                    { title: "Gentilicios", data: "demonyms" },
+                    { title: "Bandera", data: "flag" },
+                    { title: "Mapas", data: "maps" },*/
+                    { title: "Población", data: "population" },
+                    /*{ title: "Gini", data: "gini" },
+                    { title: "FIFA", data: "fifa" },
+                    { title: "Automóvil", data: "car" },
+                    { title: "Zonas Horarias", data: "timeZones" },
+                    { title: "Continentes", data: "continents" },*/
+                    { title: "Banderas", data: "flags" },
+                    /*{ title: "Escudo de Armas", data: "coatOfArms" },
+                    { title: "Inicio de Semana", data: "startOfWeek" },
+                    { title: "Coordenadas de la Capital", data: "capitalCoords" },
+                    { title: "Datos del Código Postal", data: "postalCodeData" }*/
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json'
+                },
+                initComplete: function(settings, json) {
+                    $('#spinner').hide();
+                }
+            });
+        });
+
+    </script>
+    {% endif %}
+{% endblock %}

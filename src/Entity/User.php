@@ -3,20 +3,29 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+/**
+ * @UniqueEntity("email", message="Este email ya está registrado.")
+ */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    const ROLES_TYPES = ["Rol usuario" =>"ROLE_USER",  "Rol Administrador" => "ROLE_ADMIN", "Rol super administrador" =>"ROLE_SUPER_ADMIN" , "Rol moderador" =>"ROLE_MODERATOR" , "ROLE_EDITOR" => "ROLE_EDITOR"];
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    /**
+     * @Assert\NotBlank(message="El email no puede estar vacío.")
+     * @Assert\Email(message = "El email '{{ value }}' no es válido.")
+     */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
@@ -29,32 +38,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
+    /**
+     * @Assert\NotBlank(message="La contraseña no puede estar vacía.")
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 4096,
+     *      minMessage = "Tu contraseña debe tener al menos {{ limit }} caracteres.",
+     *      maxMessage = "Tu contraseña no puede tener más de {{ limit }} caracteres."
+     * )
+     */
     #[ORM\Column]
     private ?string $password = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $photo = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
-
-    /**
-     * @param int|null $id
-     * @param string|null $email
-     * @param string[] $roles
-     * @param string|null $password
-     * @param string|null $photo
-     * @param string|null $description
-     */
-    public function __construct(?int $id, ?string $email, array $roles, ?string $password, ?string $photo, ?string $description)
-    {
-        $this->id = $id;
-        $this->email = $email;
-        $this->roles = $roles;
-        $this->password = $password;
-        $this->photo = $photo;
-        $this->description = $description;
-    }
 
 
     public function getId(): ?int
@@ -130,29 +124,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): static
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
     }
 }

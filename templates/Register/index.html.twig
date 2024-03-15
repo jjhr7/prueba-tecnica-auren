@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienbenido a la página de registro{% endblock %}
+
+{% block body %}
+    {% include 'partials/public/_public-nav.html.twig' %}
+    {% include 'partials/_flash_messages.html.twig' %}
+    <div class="login-container">
+        <div class="row text-center mt-4">
+            {% include 'partials/public/_presentation-form.html.twig' %}
+            <div class="col-md-6 d-flex justify-content-center align-items-center form-login">
+                <div class="row mt-3 mb-3">
+                    <div class="form-login-head">
+                        <h3>auren</h3>
+                        <p>Formulario de registro de usuario</p>
+                    </div>
+                    <div class="form-login-body form-register-auren">
+                       {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
